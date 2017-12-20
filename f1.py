@@ -77,23 +77,33 @@ import pandas as pd
 
 # Importing the dataset
 dataset = pd.read_csv('airbnbamsterdam1.csv')
+<<<<<<< HEAD
 X = dataset.iloc[:,6:10].values
 y = dataset.iloc[:, 4].values
 y_unique=np.unique(y)
 
 dataset.fillna(0)
 
+=======
+X = dataset.iloc[:,4,7:10].values
+y = dataset.iloc[:, 6].values
+y_unique=np.unique(y)
+
+>>>>>>> origin/master
 # Taking care of missing data
 from sklearn.preprocessing import Imputer
 imputer = Imputer(missing_values = 'NaN', strategy = 'mean', axis = 0)
 imputer = imputer.fit(X[:, 0:5])
 X[:, 0:5] = imputer.transform(X[:, 0:5])
 
+<<<<<<< HEAD
 #from sklearn.preprocessing import Imputer
 #yimputer=Imputer(missing_values = 'NaN', strategy = 'mean', axis = 0)
 #yimputer = yimputer.fit(y)
 #y = yimputer.transform(y)
 
+=======
+>>>>>>> origin/master
 #Encoding the categorical variable neighborhood
 from sklearn.preprocessing import LabelEncoder
 labelencoder_y = LabelEncoder()
@@ -101,13 +111,21 @@ y= labelencoder_y.fit_transform(y)
 
 
 
+<<<<<<< HEAD
 
 # Splitting the dataset into the Training set and Test set
 
+=======
+# Splitting the dataset into the Training set and Test set
+>>>>>>> origin/master
 from sklearn.cross_validation import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 # Feature Scaling
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
