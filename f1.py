@@ -173,3 +173,28 @@ grid_search = GridSearchCV(estimator = classifier,
 grid_search = grid_search.fit(X_train, y_train)
 best_accuracy = grid_search.best_score_
 best_parameters = grid_search.best_params_
+
+
+#categories 
+
+#datasetnew['n_type']=datasetnew['neighborhood']
+#datasetnew.drop(['neighborhood'],axis=1)
+
+dataset['neighborhood']=dataset['n_type']
+dataset.head()
+
+HighlyPopular = ["Centrum West","Centrum Oost","De Baarsjes / Oud West","De Pijp / Rivierenbuurt"]
+Popular=["Noord-West / Noord-Midden","Westerpark","Oostelijk Havengebied / Indische Buurt","Oud Oost"]
+ModeratelyPopular= ["Bos en Lommer", "Watergraafsmeer","Slotervaart","Oud Noord"]
+
+def filter_n(n_type):
+    if n_type in HighlyPopular:
+        return 'Highly Popular'
+    elif n_type in Popular:
+        return 'Popular'
+    elif n_type in ModeratelyPopular:
+        return 'Moderately Popular'
+    else:
+        return 'Low Popularity'
+    
+dataset['n_type'].apply(filter_n)
